@@ -1,5 +1,8 @@
 package com.will.model;
 
+import javax.persistence.Entity;
+
+@Entity
 public class Cidade extends GenericModel<Long> {
 
 	private static final long serialVersionUID = 1L;

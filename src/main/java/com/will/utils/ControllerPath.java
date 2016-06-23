@@ -16,6 +16,8 @@ public class ControllerPath {
 	
 	public static final String CLIENTE_PATH = PRIVATE_ROOT_PATH +" /cliente ";
 	
+	public static final String CIDADE_PATH = PRIVATE_ROOT_PATH +" /cidade ";
+	
 	public static final String PLANO_ACESSO_PATH = PRIVATE_ROOT_PATH +" /plano ";
 
 }
