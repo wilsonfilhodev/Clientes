@@ -28,13 +28,17 @@ public class ClienteServiceTest extends AbstractTests {
 		Cliente cliente = new Cliente();
 		
 		cliente.setCpf("111.222.333-44");
+		cliente.setNome("Will Filho");
+		cliente.setEmail("will@email.com");
+		cliente.setTelefone("71 9988-7766");
+		cliente.setObservacoes("Cliente de teste");
 		
 		clienteService.salvar(cliente);
 		LOGGER.info(cliente);
 	}
 	
 	@Test
-	//@Ignore
+	@Ignore
 	public void listar(){
 		List<Cliente> clientes = clienteService.listar();
 		for (Cliente cliente : clientes) {

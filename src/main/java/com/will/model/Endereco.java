@@ -1,6 +1,7 @@
 package com.will.model;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
@@ -32,7 +33,7 @@ public class Endereco extends GenericModel<Long> {
 	private String observacoes;
 	
 	@JsonIgnore
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "cliente_id", nullable = false)
 	private Cliente cliente;
 
