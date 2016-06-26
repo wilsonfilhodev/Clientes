@@ -1,2 +1,2 @@
 # Clientes
-Crud Restfull utilizando Spring, AngularJS e Bootstrap.
+Crud Restfull utilizando Spring Boot, AngularJS e Bootstrap.
