@@ -79,7 +79,7 @@ public class ClienteController
    
    @RequestMapping(method = RequestMethod.DELETE, value = "/{id}")
    public ResponseEntity<Void> remove(@PathVariable("id") long id){
-	  clienteService.deletetar(id);	
+	  clienteService.deletar(id);	
       return ResponseEntity.noContent().build();
    }
    
@@ -91,6 +91,7 @@ public class ClienteController
 	  URI uri = ServletUriComponentsBuilder.fromCurrentRequest().build().toUri();
       return ResponseEntity.created(uri).build();
    }
+   
    
 //------------------- LISTAR ENDEREÇO ------------------------
    

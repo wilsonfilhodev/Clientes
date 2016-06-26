@@ -78,7 +78,7 @@ public class CidadeController
    
    @RequestMapping(method = RequestMethod.DELETE, value = "/{id}")
    public ResponseEntity<Void> remove(@PathVariable("id") long id){
-	  cidadeService.deletetar(id);	
+	  cidadeService.deletar(id);	
       return ResponseEntity.noContent().build();
    }
    

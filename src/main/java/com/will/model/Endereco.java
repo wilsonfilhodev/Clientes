@@ -27,6 +27,7 @@ public class Endereco extends GenericModel<Long> {
 	private String cep;
 	
 	@JsonInclude(Include.NON_NULL)
+	@ManyToOne
 	private Cidade cidade;
 	
 	@JsonInclude(Include.NON_NULL)

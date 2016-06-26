@@ -1,17 +1,15 @@
 package com.will.model;
 
 import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
 
 @Entity
-public class Cidade extends GenericModel<Long> {
+public class Estado extends GenericModel<Long> {
 
 	private static final long serialVersionUID = 1L;
 	
 	private String nome;
 	
-	@ManyToOne
-	private Estado uf;
+	private String sigla;
 
 	public String getNome() {
 		return nome;
@@ -21,15 +19,15 @@ public class Cidade extends GenericModel<Long> {
 		this.nome = nome;
 	}
 
-	public Estado getUf() {
-		return uf;
+	public String getSigla() {
+		return sigla;
 	}
 
-	public void setUf(Estado uf) {
-		this.uf = uf;
+	public void setSigla(String sigla) {
+		this.sigla = sigla;
 	}
 
-		
+	
 	
 }
 

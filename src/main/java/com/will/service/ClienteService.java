@@ -42,7 +42,7 @@ public class ClienteService {
 		return clienteRepository.save(cliente);
 	}
 	
-	public void deletetar(Long id){
+	public void deletar(Long id){
 		try {
 			clienteRepository.delete(id);
 		} catch (EmptyResultDataAccessException e) {
