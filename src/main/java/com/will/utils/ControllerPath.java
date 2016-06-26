@@ -18,6 +18,8 @@ public class ControllerPath {
 	
 	public static final String CIDADE_PATH = PRIVATE_ROOT_PATH +" /cidade ";
 	
+	public static final String ESTADO_PATH = PRIVATE_ROOT_PATH +" /estado ";
+	
 	public static final String PLANO_ACESSO_PATH = PRIVATE_ROOT_PATH +" /plano ";
 
 }
