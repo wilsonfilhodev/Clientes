@@ -20,6 +20,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import com.will.model.Cliente;
 import com.will.model.Endereco;
 import com.will.service.ClienteService;
+import com.will.service.EnderecoService;
 import com.will.utils.ControllerPath;
 
 @RestController
@@ -29,6 +30,9 @@ public class ClienteController
 
    @Autowired
    private ClienteService clienteService;
+   
+   @Autowired
+   private EnderecoService enderecoService;
    
    
    //------------------ LISTAR TODOS -----------------------
@@ -85,9 +89,9 @@ public class ClienteController
    
    //------------------- ADICIONAR ENDEREÇO ------------------------
    
-   @RequestMapping(value = "/{id}/enderecos",method = RequestMethod.POST)
+   @RequestMapping(value = "/{id}/endereco",method = RequestMethod.POST)
    public ResponseEntity<Void> adicionarEndereco(@PathVariable("id") Long clienteId, @RequestBody Endereco endereco){
-	  clienteService.adicionarEndereco(clienteId, endereco);
+	  enderecoService.salvar(clienteId, endereco);
 	  URI uri = ServletUriComponentsBuilder.fromCurrentRequest().build().toUri();
       return ResponseEntity.created(uri).build();
    }
@@ -95,11 +99,42 @@ public class ClienteController
    
 //------------------- LISTAR ENDEREÇO ------------------------
    
-   @RequestMapping(value = "/{id}/enderecos",method = RequestMethod.GET)
+   @RequestMapping(value = "/{id}/endereco",method = RequestMethod.GET)
    public ResponseEntity<List<Endereco>> listarEnderecos(@PathVariable("id") Long clienteId){
-	  List<Endereco> enderecos = clienteService.listarEnderecos(clienteId);
+	  List<Endereco> enderecos = enderecoService.listar(clienteId);
       return ResponseEntity.status(HttpStatus.OK).body(enderecos);
    }
+   
+//------------------- BUSCAR ENDERECO POR ID -------------------------
+   
+   @RequestMapping(method = RequestMethod.GET, value = "/{id}/endereco/{idEndereco}")
+   public ResponseEntity<Endereco> load(@PathVariable("id") Long clienteId,
+			@PathVariable("idEndereco") Long idEndereco){ 
+	   Endereco endereco = enderecoService.buscar(idEndereco);
+      return ResponseEntity.status(HttpStatus.OK).body(endereco);
+   }
+   
+ //------------------- EDITAR ENDEREÇO ------------------------
+   
+	@RequestMapping(value = "/{id}/endereco/{idEndereco}", method = RequestMethod.PUT)
+	public ResponseEntity<Void> adicionarEndereco(@PathVariable("id") Long clienteId,
+			@PathVariable("idEndereco") Long idEndereco, @RequestBody Endereco endereco) {
+
+		endereco.setId(idEndereco);
+		endereco.setCliente(clienteService.buscar(clienteId));
+		enderecoService.atualizar(endereco);
+
+		return ResponseEntity.status(HttpStatus.OK).build();
+	}
+	
+	// ------------------- REMOVER ------------------------
+
+	@RequestMapping(method = RequestMethod.DELETE, value = "/{id}/endereco/{idEndereco}")
+	public ResponseEntity<Void> remove(@PathVariable("id") Long clienteId,
+			@PathVariable("idEndereco") Long idEndereco) {
+		enderecoService.deletar(idEndereco);
+		return ResponseEntity.noContent().build();
+	}
    
 }
 

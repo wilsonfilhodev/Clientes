@@ -9,9 +9,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.will.model.Cliente;
-import com.will.model.Endereco;
 import com.will.repository.ClienteRepository;
-import com.will.repository.EnderecoRepository;
 import com.will.services.exceptions.RegistroNaoEncontradoException;
 
 @Service
@@ -19,9 +17,6 @@ public class ClienteService {
 
 	@Autowired
 	private ClienteRepository clienteRepository;
-	
-	@Autowired
-	private EnderecoRepository enderecoRepository;
 	
 	public List<Cliente> listar(){
 		return clienteRepository.findAll();
@@ -64,16 +59,4 @@ public class ClienteService {
 		return clienteRepository.findAll(pageable);
 	}
 	
-	public Endereco adicionarEndereco(Long clienteId, Endereco endereco) {
-		Cliente cliente = buscar(clienteId);
-		endereco.setCliente(cliente);
-		
-		return enderecoRepository.save(endereco);
-	}
-	
-	public List<Endereco> listarEnderecos(Long clienteId) {
-		Cliente cliente = buscar(clienteId);
-		
-		return cliente.getEndereco();
-	}
 }
