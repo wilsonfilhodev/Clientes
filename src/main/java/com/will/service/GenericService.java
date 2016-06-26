@@ -12,9 +12,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.will.model.GenericModel;
 import com.will.services.exceptions.RegistroNaoEncontradoException;
-import com.will.utils.ControllerMap;
 
-public abstract class GenericService<T extends GenericModel<ID>, ID extends Serializable> implements ControllerMap {
+public abstract class GenericService<T extends GenericModel<ID>, ID extends Serializable> {
 
 	private final Logger LOGGER = Logger.getLogger(this.getClass());
 
