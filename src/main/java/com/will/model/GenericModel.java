@@ -11,7 +11,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 public abstract class GenericModel<ID extends Serializable> extends AbstractPersistable<ID> {
 
-	private static final long serialVersionUID = 4632365381811421389L;
+	private static final long serialVersionUID = 1L;
 	
 	@Override
 	public String toString() {

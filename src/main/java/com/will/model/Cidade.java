@@ -6,7 +6,12 @@ import javax.persistence.ManyToOne;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
+import lombok.Getter;
+import lombok.Setter;
+
 @Entity
+@Getter
+@Setter
 public class Cidade extends GenericModel<Long> {
 
 	private static final long serialVersionUID = 1L;
@@ -18,23 +23,6 @@ public class Cidade extends GenericModel<Long> {
 	@ManyToOne
 	private Estado uf;
 
-	public String getNome() {
-		return nome;
-	}
-
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
-
-	public Estado getUf() {
-		return uf;
-	}
-
-	public void setUf(Estado uf) {
-		this.uf = uf;
-	}
-
-		
 	
 }
 
